@@ -1,0 +1,4 @@
+some things to solve =>
+1: the canvas world that cause a lag time 
+2:BackgroundGradientAnimation Info 
+3: optimize images
