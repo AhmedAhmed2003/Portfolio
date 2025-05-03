@@ -56,7 +56,7 @@ export const navItems = [
       description: "The Inside Scoop",
       className: "md:col-span-3 md:row-span-2",
       imgClassName: "absolute right-0 bottom-0 md:w-96 w-60 opacity-50 rounded-lg",
-      titleClassName: "justify-center md:justify-start lg:justify-center",
+      titleClassName: "justify-center md:justify-start lg:justify-center w-full sm:max-w-2/3",
       img: "/b5.png",
       spareImg: "/grid.svg",
     },
@@ -99,7 +99,7 @@ export const navItems = [
     },
     {
       id: 4,
-      title: "Animated Apple Iphone 3D Website",
+      title: " create a porfolio website",
       des: "A Portfolio I made by modern design show my experience and my work with great animations",
       img: "/p5.jpg",
       iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/shadcn.png", "/framer.svg"],
@@ -193,7 +193,7 @@ export const navItems = [
     {
       id: 3,
       title: "Freelance App Dev Project",
-      desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
+      desc: "Led the dev of a web  application for a client, from initial concept to deployment on internet .",
       className: "md:col-span-2", // change to md:col-span-2
       thumbnail: "/exp3.svg",
     },
