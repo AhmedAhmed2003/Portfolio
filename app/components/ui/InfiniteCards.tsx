@@ -3,19 +3,20 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import profile from '../../../public/profile.svg'
 
 export const InfiniteMovingCards = ({
   items,
   direction = "left",
   speed = "fast",
   pauseOnHover = true,
+ 
   className,
 }: {
   items: {
     quote: string;
     name: string;
     title: string;
+    img:string
   }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
@@ -106,15 +107,18 @@ export const InfiniteMovingCards = ({
                 aria-hidden="true"
                 className="user-select-none pointer-events-none absolute -top-0.5 -left-0.5 -z-1 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
               ></div>
-              <span className="relative z-20 text-sm lg:text-lg  leading-[1.6] font-normal text-white">
+             
+              <div className="min-h-[120px]">
+              <span className="relative z-20 text-sm lg:text-lg  leading-[1.6] font-normal text-white  ">
                 {item.quote}
               </span>
-              <div></div>
+              </div>
              
               <div className="relative z-20 mt-6 flex flex-row items-center gap-5">
-              <div className="me-3">
+              <div className="me-3 rounded-full">
                 <Image width={60} height={60} alt={'img'}
-                src={profile.src}/>
+                className="rounded-full h-[60px] object-cover object-top"
+                src={item.img}/>
               </div>
                 <div className="flex flex-col gap-1 text-purple font-bold text-sm lg:text-lg">
                   <span className=" leading-[1.6]  ">

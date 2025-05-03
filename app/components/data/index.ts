@@ -52,12 +52,12 @@ export const navItems = [
   
     {
       id: 5,
-      title: "Currently building a JS Animation library",
+      title: "Currently building a Next.js real-estat Project",
       description: "The Inside Scoop",
       className: "md:col-span-3 md:row-span-2",
-      imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
+      imgClassName: "absolute right-0 bottom-0 md:w-96 w-60 opacity-50 rounded-lg",
       titleClassName: "justify-center md:justify-start lg:justify-center",
-      img: "/b5.svg",
+      img: "/b5.png",
       spareImg: "/grid.svg",
     },
     {
@@ -75,69 +75,71 @@ export const navItems = [
   export const projects = [
     {
       id: 1,
-      title: "3D Solar System Planets to Explore",
-      des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-      img: "/p1.svg",
-      iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-      link: "https://github.com/adrianhajdin?tab=repositories",
+      title: "Ai Summarizer",
+      des: "Summarize your page or article using my website that uses artificial intelligence to summarize content.",
+      img: "/p3.jpg",
+      iconLists: ["/re.svg", "/tail.svg", "/toolkit.svg"],
+      link: "https://github.com/AhmedAhmed2003/Ai-summarizer",
     },
     {
       id: 2,
-      title: "Yoom - Video Conferencing App",
-      des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
-      img: "/p2.svg",
-      iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
-      link: "https://github.com/adrianhajdin/zoom-clone",
+      title: "YC Directory",
+      des: "A Next.js 15 platform where entrepreneurs can submit their startup ideas for virtual pitch competitions, browse other pitches, and gain exposure through a clean minimalistic design for a smooth user experience.",
+      img: "/p2.jpg",
+      iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/sanity.png", "/shadcn.png"],
+      link: "https://github.com/AhmedAhmed2003/YC-Directory",
     },
     {
       id: 3,
-      title: "AI Image SaaS - Canva Application",
-      des: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
-      img: "/p3.svg",
-      iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-      link: "https://github.com/adrianhajdin/ai_saas_app",
+      title: "Movie Application - Movieo",
+      des: "A site that shows you the latest movies, series, and anime, the most trending, and contains information about the show, budget, and revenues.",
+      img: "/p4.jpg",
+      iconLists: ["/re.svg", "/tail.svg", "/toolkit.svg", "/query.svg"],
+      link: "https://github.com/AhmedAhmed2003/movio",
     },
     {
       id: 4,
       title: "Animated Apple Iphone 3D Website",
-      des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-      img: "/p4.svg",
-      iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-      link: "https://github.com/adrianhajdin/iphone",
+      des: "A Portfolio I made by modern design show my experience and my work with great animations",
+      img: "/p5.jpg",
+      iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/shadcn.png", "/framer.svg"],
+      link: "https://github.com/AhmedAhmed2003/Portfolio",
     },
   ];
   
   export const testimonials = [
     {
       quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
+        "Collaborating with Ahmed was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
       name: "Michael Johnson",
       title: "Director of AlphaStream Technologies",
+      img:'/profile.svg'
     },
     {
       quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
+        "I thought it was impossible to make a website as beautiful as our product, but Ahmed proved me wrong.",
+      name: "Sara Lee",
+      title: "CFO of Acme Co",
+      img:'/people1.jpg'
+
     },
     {
       quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
+        "I've never met a web developer who truly cares about their clients' success like Ahmed does.",
+      name: "Chris Brown",
+      title: "COO of DEF Corp",
+      img:'/people3.jpg'
+
     },
     {
       quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
+        "After Ahmed optimized our website, our traffic increased by 50%. We can't thank them enough!",
+      name: " Lisa Wang",
+      title: "CTO of 456 Enterprises",
+      img:'/people2.jpg'
+
     },
-    {
-      quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
-    },
+   
   ];
   
   export const companies = [
@@ -183,8 +185,8 @@ export const navItems = [
     },
     {
       id: 2,
-      title: "Mobile App Dev - JSM Tech",
-      desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
+      title: "I Always Strive To Improve.",
+      desc: "I always strive to develop and keep up with the latest updates in order to provide the best user experience.",
       className: "md:col-span-2", // change to md:col-span-2
       thumbnail: "/exp2.svg",
     },
