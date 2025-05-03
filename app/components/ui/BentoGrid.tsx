@@ -1,7 +1,10 @@
+import Link from "next/link";
 import { cn } from "../../../lib/utils";
+import ButtonMagic from "./ButtonMagic";
 import { BackgroundGradientAnimation } from "./GradientAnimation";
 import { GlobeDemo } from "./GridGlobe";
 import React from "react";
+import { FaLocationArrow } from "react-icons/fa";
 
 export const BentoGrid = ({
   className,
@@ -79,12 +82,30 @@ export const BentoGridItem = ({
         {(id===6)&&(
      <BackgroundGradientAnimation>
       <div className="absolute z-50 
-      flex items-center justify-center text-white font-bold h-full w-full">
+      flex items-center justify-center flex-col text-white font-bold h-full w-full">
        
           <div className="font-sans font-bold text-lg lg:text-3xl 
             max-w-96 z-10 capitalize  text-center">
             {title}
           </div>
+          <Link href={'mailto:ahmed5754egypt@gmail.com'}>
+{/* <ButtonMagic
+title=""
+icon={}
+position='right'
+
+/> */}
+    <button  className={`  relative mt-5 h
+     gap-3 h-12 overflow-hidden rounded-lg p-[1px]  focus:outline-none flex`}>
+    <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+    <span className="inline-flex h-full w-full cursor-pointer items-center gap-3 justify-center rounded-lg bg-black-100 px-6 text-sm font-medium text-white backdrop-blur-3xl">
+  Send me a message  <FaLocationArrow/>
+  </span>
+</button>
+
+</Link>
+
+
       </div>
      </BackgroundGradientAnimation>
         )}

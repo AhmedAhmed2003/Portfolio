@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 const Client = () => {
   return (
-    <div id='testimonials' className='text-white py-96'>
+    <div id='testimonials' className='text-white py-10'>
         <h1 className='lg:text-5xl sm:text-4xl text-2xl pb-12 capitalize font-bold text-center'>
             kind words from <br />
              <span className='text-purple inline-block pt-2 '>satisfied clients </span>

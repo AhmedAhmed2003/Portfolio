@@ -7,7 +7,7 @@ export const TextGenerateEffect = ({
   words,
   className,
   filter = true,
-  duration = 0.5,
+  duration = 0.8,
 }: {
   words: string;
   className?: string;
@@ -39,7 +39,7 @@ export const TextGenerateEffect = ({
               key={word + idx}
               className={` ${idx >3 ?'text-purple': 'dark:text-white text-white '} opacity-0`}
               style={{
-                filter: filter ? "blur(10px)" : "none",
+                // filter: filter ? "blur(10px)" : "none",
               }}
             >
               {word}{" "}

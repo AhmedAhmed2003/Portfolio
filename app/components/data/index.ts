@@ -1,5 +1,6 @@
 import { IoMdContact } from "react-icons/io";
 
+
 export const navItems = [
     { name: "About", link: "#about" },
     { name: "Projects", link: "#projects" },
@@ -207,13 +208,16 @@ export const navItems = [
     {
       id: 1,
       img: "/git.svg",
+      href:"https://github.com/AhmedAhmed2003/"
     },
     {
       id: 2,
-      img: "/twit.svg",
+      img: "/fa2.svg",
+       href:"https://web.facebook.com/noou.majed/"
     },
     {
       id: 3,
-      img: "/link.svg",
+      img: "/ins.svg",
+      href:'https://www.instagram.com/ahmid.d2003?igsh=MXRuaGc2dmFwYjE1eg%3D%3D&utm_source=qr'
     },
   ];

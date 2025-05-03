@@ -12,12 +12,12 @@ const TextAnimate = () => {
     <motion.p
       className="text-center md:tracking-wider mt-6 mb-4 text-sm md:text-lg lg:text-2xl z-10"
       variants={textVarient}
-      transition={{ duration: 1 }}
+      transition={{ duration: .8 }}
       initial="hidden"
       animate="visible"
       viewport={{ once: true }}
     >
-      Hi I'm Ahmed Ahmed, a Next.js Developer based in Egypt
+      Hi I&apos;m Ahmed Ahmed, a Next.js Developer based in Egypt
     </motion.p>
   );
 };

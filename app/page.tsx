@@ -9,10 +9,12 @@ import { FloatingNav } from "./components/ui/FloatingNavBar";
 import { navItems } from "./components/data";
 import Client from "./components/Client";
 import Experience from "./components/Experience";
+import Approach from "./components/Approach";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-  <main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden
+  <main className="relative bg-black-100 flex justify-center items-center flex-col overflow-clip
   mx-auto sm:px-10 px-10   ">
     <div className=" max-w-7xl w-full  ">
       <FloatingNav navItems={navItems}>
@@ -23,6 +25,8 @@ export default function Home() {
       <RecentProjects/>
       <Client/>
       <Experience/>
+      <Approach/>
+      <Footer/>
      
       
     </div>
