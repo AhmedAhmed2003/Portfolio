@@ -2,7 +2,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 
-const World = dynamic(() => import("../ui/Globe").then((m) => m.World), {
+const World = dynamic(() => import("./Globe").then((m) => m.World), {
   ssr: false,
 });
 
@@ -394,16 +394,17 @@ export function GlobeDemo() {
   ];
 
   return (
-    <div className="flex items-center justify-center 
-    absolute -left-5 top-40 md:top-36 w-full h-full">
-      <div className="max-w-7xl mx-auto w-full relative
-       overflow-hidden h-96 px-4 z-0 cursor-pointer">
-      
+    <div
+      className="flex items-center justify-center 
+    absolute -left-5 top-40 md:top-36 w-full h-full"
+    >
+      <div
+        className="max-w-7xl mx-auto w-full relative
+       overflow-hidden h-96 px-4 z-0 cursor-pointer"
+      >
         <div className="absolute w-full bottom-0 inset-x-0 h-40  pointer-events-none select-none from-transparent to-black z-40" />
         <div className="absolute w-full  h-72 md:h-full z-10">
-  
-         <World data={sampleArcs} globeConfig={globeConfig} />
-        
+          <World data={sampleArcs} globeConfig={globeConfig} />
         </div>
       </div>
     </div>

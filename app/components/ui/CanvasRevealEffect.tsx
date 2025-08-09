@@ -1,8 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import React, { useMemo, useRef } from "react";
-import * as THREE from "three";
+import { Canvas } from "@react-three/fiber";
+import React, { useState } from "react";
 
 export const CanvasRevealEffect = ({
   animationSpeed = 0.4,
@@ -12,10 +11,6 @@ export const CanvasRevealEffect = ({
   dotSize,
   showGradient = true,
 }: {
-  /**
-   * 0.1 - slower
-   * 1.0 - faster
-   */
   animationSpeed?: number;
   opacities?: number[];
   colors?: number[][];
@@ -23,8 +18,15 @@ export const CanvasRevealEffect = ({
   dotSize?: number;
   showGradient?: boolean;
 }) => {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <div className={cn("h-full relative bg-white w-full", containerClassName)}>
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-white z-10">
+          <p className="text-gray-700">Loading...</p>
+        </div>
+      )}
       <div className="h-full w-full">
         <DotMatrix
           colors={colors ?? [[0, 255, 255]]}
@@ -39,6 +41,7 @@ export const CanvasRevealEffect = ({
               opacity *= clamp((1.0 - step(intro_offset + 0.1, u_time * animation_speed_factor)) * 1.25, 1.0, 1.25);
             `}
           center={["x", "y"]}
+          onLoaded={() => setIsLoading(false)} // Callback to hide loading
         />
       </div>
       {showGradient && (
@@ -55,6 +58,7 @@ interface DotMatrixProps {
   dotSize?: number;
   shader?: string;
   center?: ("x" | "y")[];
+  onLoaded?: () => void; // New prop for loading callback
 }
 
 const DotMatrix: React.FC<DotMatrixProps> = ({
@@ -64,6 +68,7 @@ const DotMatrix: React.FC<DotMatrixProps> = ({
   dotSize = 2,
   shader = "",
   center = ["x", "y"],
+  onLoaded,
 }) => {
   const uniforms = React.useMemo(() => {
     let colorsArray = [
@@ -171,131 +176,50 @@ const DotMatrix: React.FC<DotMatrixProps> = ({
         }`}
       uniforms={uniforms}
       maxFps={60}
+      onLoaded={onLoaded} // Pass the callback
     />
   );
 };
 
-type Uniforms = {
-  [key: string]: {
-    value: number[] | number[][] | number;
-    type: string;
-  };
-};
-const ShaderMaterial = ({
+const Shader: React.FC<ShaderProps> = ({
   source,
   uniforms,
   maxFps = 60,
-}: {
-  source: string;
-  hovered?: boolean;
-  maxFps?: number;
-  uniforms: Uniforms;
+  onLoaded,
 }) => {
-  const { size } = useThree();
-  const ref = useRef<THREE.Mesh>(null);
-  let lastFrameTime = 0;
-
-  useFrame(({ clock }) => {
-    if (!ref.current) return;
-    const timestamp = clock.getElapsedTime();
-    if (timestamp - lastFrameTime < 1 / maxFps) {
-      return;
+  // Minimal passthrough vertex shader
+  const vertexShader = `
+    precision mediump float;
+    attribute vec3 position;
+    void main() {
+      gl_Position = vec4(position, 1.0);
     }
-    lastFrameTime = timestamp;
-
-    const material: any = ref.current.material;
-    const timeLocation = material.uniforms.u_time;
-    timeLocation.value = timestamp;
-  });
-
-  const getUniforms = () => {
-    const preparedUniforms: any = {};
-
-    for (const uniformName in uniforms) {
-      const uniform: any = uniforms[uniformName];
-
-      switch (uniform.type) {
-        case "uniform1f":
-          preparedUniforms[uniformName] = { value: uniform.value, type: "1f" };
-          break;
-        case "uniform3f":
-          preparedUniforms[uniformName] = {
-            value: new THREE.Vector3().fromArray(uniform.value),
-            type: "3f",
-          };
-          break;
-        case "uniform1fv":
-          preparedUniforms[uniformName] = { value: uniform.value, type: "1fv" };
-          break;
-        case "uniform3fv":
-          preparedUniforms[uniformName] = {
-            value: uniform.value.map((v: number[]) =>
-              new THREE.Vector3().fromArray(v)
-            ),
-            type: "3fv",
-          };
-          break;
-        case "uniform2f":
-          preparedUniforms[uniformName] = {
-            value: new THREE.Vector2().fromArray(uniform.value),
-            type: "2f",
-          };
-          break;
-        default:
-          console.error(`Invalid uniform type for '${uniformName}'.`);
-          break;
-      }
-    }
-
-    preparedUniforms["u_time"] = { value: 0, type: "1f" };
-    preparedUniforms["u_resolution"] = {
-      value: new THREE.Vector2(size.width * 2, size.height * 2),
-    }; // Initialize u_resolution
-    return preparedUniforms;
-  };
-
-  // Shader material
-  const material = useMemo(() => {
-    const materialObject = new THREE.ShaderMaterial({
-      vertexShader: `
-      precision mediump float;
-      in vec2 coordinates;
-      uniform vec2 u_resolution;
-      out vec2 fragCoord;
-      void main(){
-        float x = position.x;
-        float y = position.y;
-        gl_Position = vec4(x, y, 0.0, 1.0);
-        fragCoord = (position.xy + vec2(1.0)) * 0.5 * u_resolution;
-        fragCoord.y = u_resolution.y - fragCoord.y;
-      }
-      `,
-      fragmentShader: source,
-      uniforms: getUniforms(),
-      glslVersion: THREE.GLSL3,
-      blending: THREE.CustomBlending,
-      blendSrc: THREE.SrcAlphaFactor,
-      blendDst: THREE.OneFactor,
-    });
-
-    return materialObject;
-  }, [size.width, size.height, source]);
-
+  `;
+  // Use a ref to ensure onLoaded is only called once
+  const loadedRef = React.useRef(false);
   return (
-    <mesh ref={ref as any}>
-      <planeGeometry args={[2, 2]} />
-      <primitive object={material} attach="material" />
-    </mesh>
-  );
-};
-
-const Shader: React.FC<ShaderProps> = ({ source, uniforms, maxFps = 60 }) => {
-  return (
-    <Canvas className="absolute inset-0  h-full w-full">
-      <ShaderMaterial source={source} uniforms={uniforms} maxFps={maxFps} />
+    <Canvas className="absolute inset-0 h-full w-full">
+      <mesh
+        onAfterRender={() => {
+          if (!loadedRef.current) {
+            loadedRef.current = true;
+            if (onLoaded) {
+              onLoaded();
+            }
+          }
+        }}
+      >
+        <shaderMaterial
+          attach="material"
+          uniforms={uniforms}
+          vertexShader={vertexShader}
+          fragmentShader={source}
+        />
+      </mesh>
     </Canvas>
   );
 };
+
 interface ShaderProps {
   source: string;
   uniforms: {
@@ -305,4 +229,5 @@ interface ShaderProps {
     };
   };
   maxFps?: number;
+  onLoaded?: () => void; // New prop for loading callback
 }

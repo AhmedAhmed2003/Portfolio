@@ -22,17 +22,12 @@ const config = {
       center: true,
       padding: "2rem",
       screens: {
-        
         "2xl": "1400px",
-      
       },
     },
     extend: {
-      screens:{
-        
-          '2xsm':"420px",
-        
-     
+      screens: {
+        "2xsm": "420px",
       },
       colors: {
         black: {

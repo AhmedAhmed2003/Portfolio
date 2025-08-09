@@ -7,25 +7,30 @@ import { CanvasRevealEffect } from "@/app/components/ui/CanvasRevealEffect";
 export default function Approach() {
   return (
     <section className="py-20 w-full">
-        <h1 className="heading text-white">
-            My <span className="text-purple">Approach</span>
-        </h1>
+      <h1 className="heading text-white">
+        My <span className="text-purple">Approach</span>
+      </h1>
       <div className="py-20 flex flex-col lg:flex-row items-center justify-center  w-full gap-4 mx-auto px-8">
-        <Card title="Planing & Strategy" icon={<AceternityIcon order="Pahse 1" />}
-         description="We'll collaborate to map out your website's goals, target audience, 
+        <Card
+          title="Planing & Strategy"
+          icon={<AceternityIcon order="Pahse 1" />}
+          description="We'll collaborate to map out your website's goals, target audience, 
           and key functionalities. We'll discuss things like site structure, 
-          navigation, and content requirements">
+          navigation, and content requirements"
+        >
           <CanvasRevealEffect
             animationSpeed={5.1}
             containerClassName="bg-emerald-900"
-            
           />
         </Card>
-        <Card title="Development & Progress Update" icon={<AceternityIcon order="Pahse 2" /> }
-        description="Once we agree on the plan, I cue my lofi playlist and dive into
+        <Card
+          title="Development & Progress Update"
+          icon={<AceternityIcon order="Pahse 2" />}
+          description="Once we agree on the plan, I cue my lofi playlist and dive into
           coding. From initial sketches to polished code, I keep you updated
-          every step of the way.">
-        <CanvasRevealEffect
+          every step of the way."
+        >
+          <CanvasRevealEffect
             animationSpeed={3}
             containerClassName="bg-black"
             colors={[
@@ -37,10 +42,13 @@ export default function Approach() {
           {/* Radial gradient for the cute fade */}
           <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/90" />
         </Card>
-        <Card title="Development & Launch" icon={<AceternityIcon order="Pahse 3" />}
-         description="This is where the magic happens! Based on the approved design, 
+        <Card
+          title="Development & Launch"
+          icon={<AceternityIcon order="Pahse 3" />}
+          description="This is where the magic happens! Based on the approved design, 
           I'll translate everything into functional code, building your website
-          from the ground up.">
+          from the ground up."
+        >
           <CanvasRevealEffect
             animationSpeed={3}
             containerClassName="bg-sky-600"
@@ -61,7 +69,7 @@ const Card = ({
   title: string;
   icon: React.ReactNode;
   children?: React.ReactNode;
-  description:string
+  description: string;
 }) => {
   const [hovered, setHovered] = React.useState(false);
   return (
@@ -90,18 +98,22 @@ const Card = ({
       </AnimatePresence>
 
       <div className="relative z-20">
-        <div className="text-center group-hover/canvas-card:-translate-y-4
+        <div
+          className="text-center group-hover/canvas-card:-translate-y-4
          group-hover/canvas-card:opacity-0 transition duration-200 w-full 
-          mx-auto flex items-center justify-center absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+          mx-auto flex items-center justify-center absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
+        >
           {icon}
         </div>
         <h2 className="text-white md:text-3xl text-center text-xl opacity-0 group-hover/canvas-card:opacity-100 relative z-10  mt-4  font-bold group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-200">
           {title}
         </h2>
-        <p className="text-white text-sm lg:text-lg opacity-0 group-hover/canvas-card:opacity-100 
+        <p
+          className="text-white text-sm lg:text-lg opacity-0 group-hover/canvas-card:opacity-100 
         font-semibold
         relative z-10  mt-4 text-center   group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2
-         transition duration-200">
+         transition duration-200"
+        >
           {description}
         </p>
       </div>
@@ -109,16 +121,16 @@ const Card = ({
   );
 };
 
-const AceternityIcon = ({order} :{order:string}) => {
+const AceternityIcon = ({ order }: { order: string }) => {
   return (
-   <div>
-    <button className="relative  inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
-  <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-  <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-10 py-2 lg:text-lg text-sm font-medium text-white backdrop-blur-3xl">
-   {order}
-  </span>
-</button>
-   </div>
+    <div>
+      <button className="relative  inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+        <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+        <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-10 py-2 lg:text-lg text-sm font-medium text-white backdrop-blur-3xl">
+          {order}
+        </span>
+      </button>
+    </div>
   );
 };
 
